@@ -16,23 +16,20 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这是一篇搭建Hexo个人博客的文章,主要介绍了关于通过Hexo搭建个人博客的过程常用命令,以及遇到的一些坑。 1.常用命令 1.1初始化博客项目  1hexo init &lt;folder&gt;   1.2清除缓存  1hexo clean   1.3 编译  1hexo generation   1.4 本地运行  1hexo s   2.个人搭建遇到的问题 2.1图片解析问题   下载插件">
+    <meta name="description" content="Vue页面中解析Md文件  1.安装marked插件 1npm install marked -S  2.组件中使用 123456789101112131415161718192021222324252627282930&lt;template&gt;  &lt;div class&#x3D;&quot;w&quot;&gt;    &lt;div v-html&#x3D;&quot;articalContent&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Hexo搭建个人博客">
-<meta property="og:url" content="http://example.com/2022/03/25/Hexo-Generate/index.html">
+<meta property="og:title" content="Marked">
+<meta property="og:url" content="http://example.com/2022/03/28/Marked/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="这是一篇搭建Hexo个人博客的文章,主要介绍了关于通过Hexo搭建个人博客的过程常用命令,以及遇到的一些坑。 1.常用命令 1.1初始化博客项目  1hexo init &lt;folder&gt;   1.2清除缓存  1hexo clean   1.3 编译  1hexo generation   1.4 本地运行  1hexo s   2.个人搭建遇到的问题 2.1图片解析问题   下载插件">
+<meta property="og:description" content="Vue页面中解析Md文件  1.安装marked插件 1npm install marked -S  2.组件中使用 123456789101112131415161718192021222324252627282930&lt;template&gt;  &lt;div class&#x3D;&quot;w&quot;&gt;    &lt;div v-html&#x3D;&quot;articalContent&amp;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/03/25/Hexo-Generate/1.png">
-<meta property="article:published_time" content="2022-03-25T08:17:14.000Z">
-<meta property="article:modified_time" content="2022-03-25T12:36:24.503Z">
+<meta property="article:published_time" content="2022-03-28T02:59:12.000Z">
+<meta property="article:modified_time" content="2022-03-28T03:19:12.068Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="configure">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/03/25/Hexo-Generate/1.png">
   
   
-  <title>使用Hexo搭建个人博客 - Hexo</title>
+  <title>Marked - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -178,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="使用Hexo搭建个人博客">
+            <span class="h2" id="subtitle" title="Marked">
               
             </span>
 
@@ -188,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-03-25 16:17" pubdate>
-        March 25, 2022 pm
+      <time datetime="2022-03-28 10:59" pubdate>
+        March 28, 2022 am
       </time>
     </span>
   
@@ -199,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      337 字
+      1.1k 字
     </span>
   
 
@@ -208,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      9 分钟
     </span>
   
 
@@ -237,60 +234,43 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">使用Hexo搭建个人博客</h1>
+            <h1 style="display: none">Marked</h1>
             
             <div class="markdown-body">
-              <p>这是一篇搭建Hexo个人博客的文章,主要介绍了关于通过Hexo搭建个人博客的过程常用命令,以及遇到的一些坑。</p>
-<h1 id="1-常用命令"><a href="#1-常用命令" class="headerlink" title="1.常用命令"></a>1.常用命令</h1><blockquote>
-<p>1.1初始化博客项目</p>
+              <blockquote>
+<p>Vue页面中解析Md文件</p>
 </blockquote>
-<figure class="highlight swift"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs swift">hexo <span class="hljs-keyword">init</span> &lt;folder&gt;<br></code></pre></td></tr></table></figure>
+<p>1.安装marked插件</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> marked -S<br></code></pre></td></tr></table></figure>
+
+<p>2.组件中使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div class=&quot;w&quot;&gt;<br>    &lt;div v-html=&quot;articalContent&quot; class=&quot;markdown-body&quot;&gt;&lt;/div&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>const marked = require(&#x27;marked&#x27;)<br>import HelloWrold from &#x27;../note/HelloWorld.md&#x27;<br>import Shell from &#x27;../note/Shell.md&#x27;<br>export default &#123;<br>  data() &#123;<br>    return &#123;<br>      articalContent: &#x27;&#x27;<br>    &#125;<br>  &#125;,<br>  created() &#123;<br>    <br>    this.articalContent = marked(Shell)<br>  &#125;<br>&#125;<br>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br>  .w &#123;<br>    width: 1226px;<br>    margin: 0 auto;<br>  &#125;<br>&lt;/style&gt;<br><br></code></pre></td></tr></table></figure>
+
+<p>3.如果想引入外部md文件则</p>
+<blockquote>
+<p>3.1 安装插件</p>
+</blockquote>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">npm <span class="hljs-keyword">install</span> html-loader markdown-loader -S<br></code></pre></td></tr></table></figure>
 
 <blockquote>
-<p>1.2清除缓存</p>
+<p>3.2 配置 vue.config.js</p>
 </blockquote>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo clean</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;<br>    config.<span class="hljs-property">module</span><br>      .<span class="hljs-title function_">rule</span>(<span class="hljs-string">&#x27;md&#x27;</span>)<br>      .<span class="hljs-title function_">test</span>(<span class="hljs-regexp">/\.md/</span>)<br>      .<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;html-loader&#x27;</span>)<br>      .<span class="hljs-title function_">loader</span>(<span class="hljs-string">&#x27;html-loader&#x27;</span>)<br>      .<span class="hljs-title function_">end</span>()<br>      .<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;markdown-loader&#x27;</span>)<br>      .<span class="hljs-title function_">loader</span>(<span class="hljs-string">&#x27;markdown-loader&#x27;</span>)<br>      .<span class="hljs-title function_">end</span>()<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>4.调整样式</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">$ npm <span class="hljs-keyword">install</span> github-markdown-css<br></code></pre></td></tr></table></figure>
 
 <blockquote>
-<p>1.3 编译</p>
+<p>全局引入</p>
 </blockquote>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo generation</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs aspectj"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;github-markdown-css&#x27;</span><br></code></pre></td></tr></table></figure>
 
-<blockquote>
-<p>1.4 本地运行</p>
-</blockquote>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo s</span> <br></code></pre></td></tr></table></figure>
-
-<h1 id="2-个人搭建遇到的问题"><a href="#2-个人搭建遇到的问题" class="headerlink" title="2.个人搭建遇到的问题"></a>2.个人搭建遇到的问题</h1><blockquote>
-<p>2.1图片解析问题</p>
-</blockquote>
-<ol>
-<li><p>下载插件</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">npm install https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/CodeFalling/</span>hexo-asset-img<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>修改_config.yml配置</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">post_asset_foler</span>  = <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>使用相对路径引入文件</li>
-</ol>
-</li>
-</ol>
-<p>**注意:对于Windows用户一定一定要在引用图片时加.&#x2F;否则会报错,同时插件也必须是上面的插件,对于旧版产检i一样不好用</p>
-<p><img src="/2022/03/25/Hexo-Generate/1.png" srcset="/img/loading.gif" lazyload alt="测试图片"></p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/configure/">configure</a>
-                    
-                  </div>
                 
               </div>
               
@@ -305,18 +285,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/28/Marked/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Marked</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/25/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2022/03/25/Hexo-Generate/">
+                        <span class="hidden-mobile">使用Hexo搭建个人博客</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
