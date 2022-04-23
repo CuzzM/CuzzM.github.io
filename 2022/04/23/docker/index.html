@@ -16,19 +16,40 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+    <meta name="description" content="1. docker镜像基本操作1.1 docker辅助命令1234567891011# 用来展示docker信息docker info# 查看版本号docer version# 查看docker所有帮助命令docker --help# docker命令格式  []-&gt;代表可选的docker [options] command  1.2 操作镜像的相关命令12# 查看本地仓库中存在哪些镜像">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker">
+<meta property="og:url" content="http://example.com/2022/04/23/docker/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. docker镜像基本操作1.1 docker辅助命令1234567891011# 用来展示docker信息docker info# 查看版本号docer version# 查看docker所有帮助命令docker --help# docker命令格式  []-&gt;代表可选的docker [options] command  1.2 操作镜像的相关命令12# 查看本地仓库中存在哪些镜像">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/04/23/docker/04/23/docker/image-20220423134337961.png">
+<meta property="article:published_time" content="2022-04-23T05:28:31.000Z">
+<meta property="article:modified_time" content="2022-04-23T05:43:49.956Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/04/23/docker/04/23/docker/image-20220423134337961.png">
   
   
-  <title>Hexo</title>
+  <title>docker - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -55,7 +76,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -156,17 +177,47 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="An elegant Material-Design theme for Hexo">
+            <span class="h2" id="subtitle" title="docker">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-23 13:28" pubdate>
+        April 23, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      181 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -175,164 +226,80 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/04/23/docker/" target="_self">
-          docker
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/04/23/docker/" target="_self">
-          
-          1. docker镜像基本操作1.1 docker辅助命令1234567891011# 用来展示docker信息docker info# 查看版本号docer version# 查看docker所有帮助命令docker --help# docker命令格式  []-&gt;代表可选的docker [options] command  1.2 操作镜像的相关命令12# 查看本地仓库中存在哪些镜像
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-04-23 13:28" pubdate>
-              2022-04-23
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/03/28/Marked/" target="_self">
-          Marked
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/03/28/Marked/" target="_self">
-          
-          Vue页面中解析Md文件  1.安装marked插件 1npm install marked -S  2.组件中使用 123456789101112131415161718192021222324252627282930&lt;template&gt;  &lt;div class&#x3D;&quot;w&quot;&gt;    &lt;div v-html&#x3D;&quot;articalContent&amp;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-03-28 10:59" pubdate>
-              2022-03-28
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/03/25/Hexo-Generate/" target="_self">
-          使用Hexo搭建个人博客
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/03/25/Hexo-Generate/" target="_self">
-          
-          这是一篇搭建Hexo个人博客的文章,主要介绍了关于通过Hexo搭建个人博客的过程常用命令,以及遇到的一些坑。 1.常用命令 1.1初始化博客项目  1hexo init &lt;folder&gt;   1.2清除缓存  1hexo clean   1.3 编译  1hexo generation   1.4 本地运行  1hexo s   2.个人搭建遇到的问题 2.1图片解析问题   下载插件
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-03-25 16:17" pubdate>
-              2022-03-25
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">docker</h1>
             
-              <a href="/tags/configure/">configure</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
+            <div class="markdown-body">
+              <h1 id="1-docker镜像基本操作"><a href="#1-docker镜像基本操作" class="headerlink" title="1. docker镜像基本操作"></a>1. docker镜像基本操作</h1><h2 id="1-1-docker辅助命令"><a href="#1-1-docker辅助命令" class="headerlink" title="1.1 docker辅助命令"></a>1.1 docker辅助命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">用来展示docker信息</span><br>docker info<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看版本号</span><br>docer version<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看docker所有帮助命令</span><br>docker --help<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">docker命令格式  []-&gt;代表可选的</span><br>docker [options] command<br></code></pre></td></tr></table></figure>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/03/25/hello-world/" target="_self">
-          Hello World
-        </a>
-      </h1>
+<h2 id="1-2-操作镜像的相关命令"><a href="#1-2-操作镜像的相关命令" class="headerlink" title="1.2 操作镜像的相关命令"></a>1.2 操作镜像的相关命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">查看本地仓库中存在哪些镜像</span><br><br></code></pre></td></tr></table></figure>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/25/hello-world/" target="_self">
-          
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-03-25 13:28" pubdate>
-              2022-03-25
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
+<img src="/2022/04/23/docker/04/23/docker/image-20220423134337961.png" srcset="/img/loading.gif" lazyload class title="image-20220423134337961">
 
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/28/Marked/">
+                        <span class="hidden-mobile">Marked</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -415,6 +382,19 @@
   
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 

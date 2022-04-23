@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>docker</title>
+    <link href="/2022/04/23/docker/"/>
+    <url>/2022/04/23/docker/</url>
+    
+    <content type="html"><![CDATA[<h1 id="1-docker镜像基本操作"><a href="#1-docker镜像基本操作" class="headerlink" title="1. docker镜像基本操作"></a>1. docker镜像基本操作</h1><h2 id="1-1-docker辅助命令"><a href="#1-1-docker辅助命令" class="headerlink" title="1.1 docker辅助命令"></a>1.1 docker辅助命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">用来展示docker信息</span><br>docker info<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看版本号</span><br>docer version<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看docker所有帮助命令</span><br>docker --help<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">docker命令格式  []-&gt;代表可选的</span><br>docker [options] command<br></code></pre></td></tr></table></figure><h2 id="1-2-操作镜像的相关命令"><a href="#1-2-操作镜像的相关命令" class="headerlink" title="1.2 操作镜像的相关命令"></a>1.2 操作镜像的相关命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">查看本地仓库中存在哪些镜像</span><br><br></code></pre></td></tr></table></figure><img src="/2022/04/23/docker/04/23/docker/image-20220423134337961.png" class title="image-20220423134337961">]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Marked</title>
     <link href="/2022/03/28/Marked/"/>
     <url>/2022/03/28/Marked/</url>
