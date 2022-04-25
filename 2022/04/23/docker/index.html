@@ -26,8 +26,10 @@
 <meta property="og:image" content="http://example.com/2022/04/23/docker/image-20220423134337961.png">
 <meta property="og:image" content="http://example.com/2022/04/23/docker/image-20220423175349258.png">
 <meta property="og:image" content="http://example.com/2022/04/23/docker/image-20220423191451369.png">
+<meta property="og:image" content="http://example.com/2022/04/23/docker/image-20220424105048273.png">
+<meta property="og:image" content="http://example.com/2022/04/23/docker/image-20220424150615720.png">
 <meta property="article:published_time" content="2022-04-23T05:28:31.000Z">
-<meta property="article:modified_time" content="2022-04-23T11:53:34.468Z">
+<meta property="article:modified_time" content="2022-04-24T09:12:34.676Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/04/23/docker/image-20220423134337961.png">
@@ -200,7 +202,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.5k 字
+      4.3k 字
     </span>
   
 
@@ -209,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21 分钟
+      36 分钟
     </span>
   
 
@@ -358,6 +360,88 @@
 <p>9.将容器打包成一个新的镜像</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">将正在运行的容器打包成一个镜像</span><br>docker commit -m “描述信息” -a “作者” 容器唯一标识 打包后的镜像名:版本号<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">将镜像备份出来</span><br>docker save 镜像名称:Tag -o 文件名<br>docker save tomcat:1.0 -o tomcat-1.0.tar<br></code></pre></td></tr></table></figure>
+
+<h1 id="3-docker镜像分层原理"><a href="#3-docker镜像分层原理" class="headerlink" title="3. docker镜像分层原理"></a>3. docker镜像分层原理</h1><blockquote>
+<p>3.1 镜像定义</p>
+</blockquote>
+<p>定义:一个镜像代表一个软件 软件包 用来打包软件运行环境和基于运行环境开发的软件,它包含运行某个软件所需的所有内容,包括代码、运行时所需的库、环境变量、配置文件</p>
+<blockquote>
+<p>3.2问题思考</p>
+</blockquote>
+<p>1.镜像为什么这么大？</p>
+<p><strong>原因</strong>：一个软件镜像不仅仅是原来软件包,还包含软件所需的操作系统依赖 软件自身依赖 以及自身软件包组成</p>
+<p>2.为什么docker镜像采用分层镜像原理</p>
+<p>docker在设计镜像时每一个镜像都是由n个镜像组成 —&gt;镜像像一个花卷一层一层。</p>
+<p>3.为什么采用联合文件系统</p>
+<p>好处:最大的一个好处时资源共享 采用分层机制实现基础层共享 从而减少docker仓库的大小</p>
+<h1 id="4-docker容器间的网络配置"><a href="#4-docker容器间的网络配置" class="headerlink" title="4. docker容器间的网络配置"></a>4. docker容器间的网络配置</h1><blockquote>
+<p>4.1为什么需要网络功能</p>
+</blockquote>
+<p>Docker允许通过外部访问容器或容器互联的方式来提供网络服务</p>
+<p>1.docker容器与操作系统的通信机制</p>
+<p><img src="/2022/04/23/docker/image-20220424105048273.png" srcset="/img/loading.gif" lazyload alt="image-20220424105048273"></p>
+<p>2.docker网络使用</p>
+<p>注意: 一般在使用docker网桥(bridge)实现容器与容器通信时,都是站在一个应用角度进行容器通信</p>
+<p>3.查看docker默认网桥</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">查看docker默认网桥</span><br>docker network ls<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">创建自己的网桥</span><br>docker create &lt;网桥名称&gt; -d bridge(默认桥接方式)<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动容器时指定网桥</span><br>docker run -d -p 8080:8080 --network ems --name....<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置了network后可以通过名字访问,不在使用ip了</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">使用docker run --network时网桥必须存在</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="5-docker数据卷"><a href="#5-docker数据卷" class="headerlink" title="5. docker数据卷"></a>5. docker数据卷</h1><blockquote>
+<p>5.1数据卷作用</p>
+</blockquote>
+<p>用来实现容器与宿主机之间的数据共享</p>
+<blockquote>
+<p>5.2数据卷特点</p>
+</blockquote>
+<ul>
+<li>数据卷: 可以在容器之间共享和重用</li>
+<li>对数据卷的修改会立即影响到对应的容器</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-v后面的:ro 代表<span class="hljs-built_in">read</span> only 只读</span><br>docker run -d -p 8085:8080 --name tomcat5 -v /home/apps:/usrl/local/tomcat:ro tomcat:8.0-jre8<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>对数据卷的更新修改,不会影响镜像</li>
+<li>数据卷默认一直存在,即使容器删除</li>
+</ul>
+<blockquote>
+<p>5.3数据卷操作</p>
+</blockquote>
+<p>1.自定义数据卷目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -v 绝对路径:容器内路径<br></code></pre></td></tr></table></figure>
+
+<p>2.自动创建数据卷</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -v 卷名:(容器内路径)<br></code></pre></td></tr></table></figure>
+
+<p>3.docker操作数据卷指令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">查看数据卷</span><br>docker volume ls<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看某个数据卷细节</span><br>docker volume inspect aa<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">创建数据卷</span><br>docker volume create bb<br></code></pre></td></tr></table></figure>
+
+<h1 id="6-docker核心架构图"><a href="#6-docker核心架构图" class="headerlink" title="6. docker核心架构图"></a>6. docker核心架构图</h1><p><img src="/2022/04/23/docker/image-20220424150615720.png" srcset="/img/loading.gif" lazyload alt="image-20220424150615720"></p>
+<h1 id="7-docker安装服务"><a href="#7-docker安装服务" class="headerlink" title="7.docker安装服务"></a>7.docker安装服务</h1><h2 id="7-1-docker安装mysql"><a href="#7-1-docker安装mysql" class="headerlink" title="7.1 docker安装mysql"></a>7.1 docker安装mysql</h2><ol>
+<li><p>在docker hub搜索对应服务的镜像</p>
+</li>
+<li><p>查看服务的描述和版本号</p>
+</li>
+<li><p>确定使用的版本进行pull</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker pull mysql:5.6<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>使用镜像</p>
+<p>4.1 基本启动mysql服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">基本命令</span><br>docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">example</span><br>docker run --name mysql-5.6 -r MYSQL_ROOT_PASSWORD=root -d mysql:5.6<br></code></pre></td></tr></table></figure>
+
+<p>4.2 端口映射</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -d -p 8087:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=root -v mysqldata:/var/lib/mysql mysql:5.6<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="7-2-docker安装tomcat"><a href="#7-2-docker安装tomcat" class="headerlink" title="7.2 docker安装tomcat"></a>7.2 docker安装tomcat</h2><blockquote>
+<p>1.下载tomcat服务</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker pull tomcat:8.0-jre8<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>2.启动tomcat服务</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">2.1 启动tomcat服务</span><br>docker run -d -p 8081:8080 --name tomcat tomcat:8.0-jre8<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">2.2 将部署应用目录通过数据卷挂载宿主机系统</span><br>docker run -d -p 8081:8080 --name tomcat -v apps:/url/local/tomcat/webapps tomcat:8.0-jre8<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">2.3 修改配置文件,并将配置文件挂载到宿主机系统</span><br>docker run -d -p 8081:8080 --name tomcat -v apps:/url/local/tomcat/webapps -v confs:/usr/local/tomcat/c tomcat:8.0-jre8<br></code></pre></td></tr></table></figure>
 
 
             </div>
