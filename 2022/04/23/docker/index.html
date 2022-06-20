@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/2022/04/23/docker/image-20220424105048273.png">
 <meta property="og:image" content="http://example.com/2022/04/23/docker/image-20220424150615720.png">
 <meta property="article:published_time" content="2022-04-23T05:28:31.000Z">
-<meta property="article:modified_time" content="2022-04-24T09:12:34.676Z">
+<meta property="article:modified_time" content="2022-04-26T02:01:25.996Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/04/23/docker/image-20220423134337961.png">
@@ -426,7 +426,7 @@
 <ol start="4">
 <li><p>使用镜像</p>
 <p>4.1 基本启动mysql服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">基本命令</span><br>docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">example</span><br>docker run --name mysql-5.6 -r MYSQL_ROOT_PASSWORD=root -d mysql:5.6<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">基本命令 -e 代表的environmenth</span><br>docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">example</span><br>docker run --name mysql-5.6 -r MYSQL_ROOT_PASSWORD=root -d mysql:5.6<br></code></pre></td></tr></table></figure>
 
 <p>4.2 端口映射</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -d -p 8087:3306 --name mysql1 -e MYSQL_ROOT_PASSWORD=root -v mysqldata:/var/lib/mysql mysql:5.6<br></code></pre></td></tr></table></figure></li>
@@ -462,6 +462,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/06/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">设计模式</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
