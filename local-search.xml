@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>MySQL</title>
+    <link href="/2022/07/11/MySQL/"/>
+    <url>/2022/07/11/MySQL/</url>
+    
+    <content type="html"><![CDATA[<h1 id="1-数据库概述"><a href="#1-数据库概述" class="headerlink" title="1. 数据库概述"></a>1. 数据库概述</h1><h2 id="1-1-为什么使用数据库"><a href="#1-1-为什么使用数据库" class="headerlink" title="1.1 为什么使用数据库"></a>1.1 为什么使用数据库</h2><ul><li>持久化，内存中的数据断电即失，使用数据库</li></ul><h2 id="1-2-数据库相关术语"><a href="#1-2-数据库相关术语" class="headerlink" title="1.2 数据库相关术语"></a>1.2 数据库相关术语</h2><p><strong>DB: 数据库(Database)</strong></p><p><strong>DBMS: 数据库管理系统</strong></p><p><strong>SQL: 结构化查询语言(Structured Query Language)</strong></p><p>这几个概念笔比较简单，数据库指的是我们的数据库文件，数据库管理系统则相当于MySQL，对数据库进行统一管理和控制</p><p><img src="/2022/07/11/MySQL/image-20220711222406283.png" alt="image-20220711222406283"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>MySQL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>spring5</title>
     <link href="/2022/07/10/spring5/"/>
     <url>/2022/07/10/spring5/</url>
