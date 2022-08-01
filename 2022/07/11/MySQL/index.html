@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/07/11/MySQL/image-20220711222406283.png">
 <meta property="article:published_time" content="2022-07-11T14:05:02.000Z">
-<meta property="article:modified_time" content="2022-07-12T13:19:24.140Z">
+<meta property="article:modified_time" content="2022-07-12T13:38:36.427Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary_large_image">
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      1.5k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11 分钟
+      13 分钟
     </span>
   
 
@@ -298,10 +298,15 @@
 <td>GRANT、REOKE、COMMIT、ROLLBACK、SAVEPOINT</td>
 </tr>
 </tbody></table>
-<h2 id="3-2-数据库操作"><a href="#3-2-数据库操作" class="headerlink" title="3.2 数据库操作"></a>3.2 数据库操作</h2><p><strong>去除重复行</strong></p>
+<h2 id="3-2-数据库操作"><a href="#3-2-数据库操作" class="headerlink" title="3.2 数据库操作"></a>3.2 数据库操作</h2><blockquote>
+<ol>
+<li>DISTINCT</li>
+</ol>
+</blockquote>
+<p><strong>去除重复行</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">通过DISTINCT取出重复行</span><br>SELECT DISTINCT [field] From [Table]<br></code></pre></td></tr></table></figure>
 
-<p>基础数据表</p>
+<p><strong>基础数据表</strong></p>
 <table>
 <thead>
 <tr>
@@ -342,7 +347,53 @@
 <td>3</td>
 </tr>
 </tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> dep_id <span class="hljs-keyword">From</span> Employee;<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"># 实际意义就是查询所有部门号<br><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> dep_id <span class="hljs-keyword">From</span> Employee;<br></code></pre></td></tr></table></figure>
+
+<p><strong>结果</strong></p>
+<table>
+<thead>
+<tr>
+<th>dep_id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs SQL"># 这个会报错,因为id有<span class="hljs-number">5</span>条，而dep_id只有三条，会error<br><span class="hljs-keyword">SELECT</span> id,<span class="hljs-keyword">DISTINCT</span> dep_id <span class="hljs-keyword">from</span> employee<br><br># 这个不会报错,但没有实际意义，表示去除id和dep_id相同的数据信息<br><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> id,dep_id <span class="hljs-keyword">from</span> employee<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="2">
+<li>NULL和0</li>
+</ol>
+</blockquote>
+<ol>
+<li><p>空值不等同与0</p>
+</li>
+<li><p>空值参与运算返回结果均为0</p>
+</li>
+<li><p>IFNULL(字段名，0) 表示如果字段名为NULL,那么就令他为0</p>
+</li>
+</ol>
+<blockquote>
+<ol start="3">
+<li>DESCRIBE</li>
+</ol>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs SQL"># 显示表结构<br><span class="hljs-keyword">DESCRIBE</span> [<span class="hljs-keyword">table</span>]<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="4">
+<li>WHERE过滤数据</li>
+</ol>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> employee <span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
 
 
             </div>
