@@ -23,11 +23,15 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. Servlet规范介绍 Servlet规范来自于JAVAEE规范中的一种  作用:  在Servlet规范中,指定【动态资源文件】开发步骤            ——————&gt;开发者 在Servlet规范中,指定Http服务器调用动态资源文件规则 ——————&gt;Web服务器 在Servlet规范中,指定Http服务器管理动态资源文件实例对象规则 ————&gt;Web服务器">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/08/12/Servlet/image-20220813112426531.png">
+<meta property="og:image" content="http://example.com/2022/08/12/Servlet/image-20220821191720039.png">
+<meta property="og:image" content="http://example.com/2022/08/12/Servlet/image-20220821222017697.png">
 <meta property="article:published_time" content="2022-08-12T12:51:29.000Z">
-<meta property="article:modified_time" content="2022-08-12T15:30:08.044Z">
+<meta property="article:modified_time" content="2022-08-21T14:58:59.527Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="JavaWeb">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/08/12/Servlet/image-20220813112426531.png">
   
   
   <title>Servlet - Hexo</title>
@@ -197,7 +201,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5k 字
+      8k 字
     </span>
   
 
@@ -206,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      42 分钟
+      68 分钟
     </span>
   
 
@@ -312,6 +316,105 @@
 <li>要使能识别html代码，则使用特定的文本编辑器,设置<strong>响应的contentType</strong></li>
 <li>可以使用resp.sendRedirect()进行重定向</li>
 </ol>
+<h1 id="6-HttpServletRequest"><a href="#6-HttpServletRequest" class="headerlink" title="6. HttpServletRequest"></a>6. HttpServletRequest</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.zjw.controller;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.PrintWriter;<br><span class="hljs-keyword">import</span> java.util.Enumeration;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> zjw</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2022/8/13 9:11</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HttpServlet</span> &#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException &#123;<br><br>        <span class="hljs-type">String</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> req.getRequestURL().toString();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">uri</span> <span class="hljs-operator">=</span> req.getRequestURI();<br>        System.out.println(<span class="hljs-string">&quot;url:&quot;</span> + url);<br>        System.out.println(<span class="hljs-string">&quot;uri:&quot;</span> + uri);<br><br>        <span class="hljs-comment">/**</span><br><span class="hljs-comment">         * 通过一个枚举对象获得所有请求参数名称</span><br><span class="hljs-comment">         */</span><br>        Enumeration&lt;String&gt; parameterNames = req.getParameterNames();<br>        <span class="hljs-keyword">while</span>(parameterNames.hasMoreElements())&#123;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">paramKey</span> <span class="hljs-operator">=</span> parameterNames.nextElement();<br>            <span class="hljs-type">String</span> <span class="hljs-variable">paramValue</span> <span class="hljs-operator">=</span> req.getParameter(paramKey);<br>            System.out.println(paramKey + <span class="hljs-string">&quot;=&quot;</span> + paramValue);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException &#123;<br>        req.setCharacterEncoding(<span class="hljs-string">&quot;utf-8&quot;</span>);<br>        resp.setContentType(<span class="hljs-string">&quot;text/htm;charset=utf-8&quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> req.getParameter(<span class="hljs-string">&quot;username&quot;</span>);<br>        System.out.println(username);<br>        <span class="hljs-type">PrintWriter</span> <span class="hljs-variable">out</span> <span class="hljs-operator">=</span> resp.getWriter();<br>        out.print(username);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="7-请求和响应对象生命周期"><a href="#7-请求和响应对象生命周期" class="headerlink" title="7. 请求和响应对象生命周期"></a>7. 请求和响应对象生命周期</h1><ol>
+<li><p>在http服务器接收到浏览器发送的【http请求协议包】之后,自动为当前的【http请求协议包】生成有一个【请求对象】和【响应对象】</p>
+</li>
+<li><p>在http服务器调用doGet&#x2F;doPost方法时,负责将【请求对象】和【响应】对象作为实参传递到方法，确保doGet&#x2F;doPost正确执行</p>
+</li>
+<li><p>当doGet&#x2F;doPost方法运行完毕时,意味着本次请求处理完毕,返回【Http响应协议包】，在返回【Http响应协议包】推送浏览器之前,会销毁当前请求的【请求对象】和【响应对象】销毁</p>
+</li>
+</ol>
+<p><strong>【请求对象】和【响应对象】贯彻一次请求的始终</strong></p>
+<p><img src="/2022/08/12/Servlet/image-20220813112426531.png" srcset="/img/loading.gif" lazyload alt="image-20220813112426531"></p>
+<h1 id="8-请求重定向和转发"><a href="#8-请求重定向和转发" class="headerlink" title="8. 请求重定向和转发"></a>8. 请求重定向和转发</h1><ol>
+<li><strong>重定向原理</strong></li>
+</ol>
+<ul>
+<li>用户第一次通过【手动方式】通知浏览器访问oneServlet。oneServlet工作完毕后,将TwoServlet地址写入到响应头location属性中，导致Tomcat将302状态码写入状态行。</li>
+</ul>
+<p>​        在浏览器接受到相应包之后,会读取到302状态。此时浏览器自动根据响应头中的location属性访问第二个</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">response.sendRedirect(<span class="hljs-string">&quot;请求地址&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>重定向特性</strong></li>
+</ol>
+<ul>
+<li><p>请求地址</p>
+<p>既可以把当前网站内部的资源文件地址发送给浏览器，也可以访问其它网站。</p>
+</li>
+<li><p>请求次数</p>
+<p>浏览器至少发送两次请求，但只有第一次请求是【手动发送】,其余均是自动发送</p>
+</li>
+<li><p>请求方式</p>
+<p>重定向解决发方案中,通讯地址栏通知浏览器发起下一次请求，因此通过重定向解决方案调用的资源文件一定是get方式</p>
+</li>
+</ul>
+<ol start="3">
+<li>重定向缺点</li>
+</ol>
+<ul>
+<li>请求来回返回,浪费时间。</li>
+</ul>
+<p><img src="/2022/08/12/Servlet/image-20220821191720039.png" srcset="/img/loading.gif" lazyload alt="image-20220821191720039"></p>
+<p>请求转发的原理：就是Tomcat在接受请求之后,代替浏览器完成请求实现命令如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//1. 通过当前请求对象生成资源文件申请报告对象</span><br><span class="hljs-type">RequestDispatcher</span> <span class="hljs-variable">report</span> <span class="hljs-operator">=</span> request.getRequsetDispatcher(“/资源文件名”);<br><br><span class="hljs-comment">//2. 将报告对象发送给Tomcat</span><br>report.forward(requset,report)<br></code></pre></td></tr></table></figure>
+
+<p><strong>请求转发的优点:</strong></p>
+<ol>
+<li>用户只需要发送一次请求</li>
+<li>较少请求往返次数,减少延迟</li>
+</ol>
+<p><strong>特征</strong></p>
+<ol>
+<li>在请求转发过程中,浏览器只发送一次请求</li>
+<li>只能向Tomcat服务器中申请调用当前网站下资源文件地址,不能写网站名</li>
+<li><strong>内部转发的方式是根据客户端第一次请求的method保持一致</strong>。</li>
+</ol>
+<h1 id="9-Servlet之间的数据共享"><a href="#9-Servlet之间的数据共享" class="headerlink" title="9. Servlet之间的数据共享"></a>9. Servlet之间的数据共享</h1><ol>
+<li>数据共享： OneServlet工作完毕后,将产生的数据交给TwoServlet</li>
+<li>Servlet规范中提供四种数据共享方案<ol>
+<li>ServletContext接口</li>
+<li>Cookie类</li>
+<li>HttpSession接口</li>
+<li>HttpServletRequest接口</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>ServletContext接口</p>
+</blockquote>
+<ol>
+<li>来自于Servlet规范中的一个接口,在Tomcat中存在servlet-api.jar在Tomcat中负责提供这个接口实现类</li>
+<li>如果两个Servlet来自于同一个网站。彼此之间通过网站的ServletContext实例对象实现共享数据</li>
+<li>ServletContext是【全局共享对象】</li>
+</ol>
+<p><img src="/2022/08/12/Servlet/image-20220821222017697.png" srcset="/img/loading.gif" lazyload alt="image-20220821222017697"></p>
+<p>全局作用域对象声明周期:</p>
+<ol>
+<li>在Http服务器启动的时候,就会在内存中为当前应用创建一个全局作用域对象</li>
+<li>在Http服务器运行期间时,一个应用只有一个全局作用域对象</li>
+<li>在Http服务器运行期间,全局作用域对象一直存活</li>
+<li>在Http服务器准备关闭时,负责将当前应用中全局作用域对象进行销毁处理</li>
+</ol>
+<p><strong>全局作用域对象贯彻整个应用的运行期间</strong></p>
+<ol start="5">
+<li>通过请求对象向Tomcat索要当前网站中【全局作用域对象】</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ServletContext</span> <span class="hljs-variable">application</span> <span class="hljs-operator">=</span> request.getServletContext();<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Cookie</p>
+</blockquote>
+<ol>
+<li>Cookie来自于Servlet规范中的一个工具类,存在于Tomcat提供servlet-api.jar中</li>
+<li>如果两个Servlet来自于同一网站,并且为同一浏览器&#x2F;用户提供服务,此时借助于cookie对象进行数据共享</li>
+<li>Cookie存放当前用户的私人数据,在共享数据过程中提高服务质量</li>
+<li>在现实生活场景中,Cookie相当于【会员卡】</li>
+</ol>
 
             </div>
             <hr>
@@ -338,6 +441,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/08/14/JDBC/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JDBC</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

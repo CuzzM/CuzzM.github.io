@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://example.com/2022/07/10/spring5/image-20220710203346892.png">
 <meta property="og:image" content="http://example.com/2022/07/10/spring5/image-20220710204724151.png">
 <meta property="article:published_time" content="2022-07-10T02:11:00.000Z">
-<meta property="article:modified_time" content="2022-08-11T15:08:55.666Z">
+<meta property="article:modified_time" content="2022-08-21T03:36:04.986Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java框架">
 <meta name="twitter:card" content="summary_large_image">
@@ -204,7 +204,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      12k 字
+      13k 字
     </span>
   
 
@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      97 分钟
+      108 分钟
     </span>
   
 
@@ -565,7 +565,32 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--jdbcTemplate--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;jdbcTemplate&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.jdbc.core.JdbcTemplate&quot;</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--set方式注入--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;dataSource&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;dataSource&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>5. 测试</strong></p>
-<h1 id="5-事务管理"><a href="#5-事务管理" class="headerlink" title="5. 事务管理"></a>5. 事务管理</h1><h1 id="6-Spring5新特性"><a href="#6-Spring5新特性" class="headerlink" title="6. Spring5新特性"></a>6. Spring5新特性</h1>
+<h1 id="5-事务管理"><a href="#5-事务管理" class="headerlink" title="5. 事务管理"></a>5. 事务管理</h1><p>事务四个特性:</p>
+<ul>
+<li>原子性:  Atomicity: 一个事务中的所有操作,要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被恢复（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。</li>
+<li>一致性: Consistency: 在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设规则，这包含资料的精确度、串联性以及后续数据库可以自发性地完成预定的工作。</li>
+<li>隔离性: Isolation：：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（Serializable）。</li>
+<li>持久性:  Durability:事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</li>
+</ul>
+<p>典型场景: 银行转账</p>
+<p><strong>事务处理</strong></p>
+<ul>
+<li><p>编程式事务处理</p>
+</li>
+<li><p>声明式事务处理（一般使用声明式事务处理）</p>
+<ul>
+<li>基于注解的方式</li>
+<li>基于xml配置文件方式</li>
+</ul>
+</li>
+</ul>
+<p>在sprng中使用声明式事务，底层使用AOP原理</p>
+<p>Spring提供了一个接口，代表事务管理器，这个接口针对不同的框架提供不同的实现类</p>
+<p>注解@Transactional</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span><br><span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="hljs-meta">@Inherited</span><br><span class="hljs-meta">@Documented</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> Transactional &#123;<br>    <span class="hljs-meta">@AliasFor(&quot;transactionManager&quot;)</span><br>    String <span class="hljs-title function_">value</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&quot;&quot;</span>;<br><br>    <span class="hljs-meta">@AliasFor(&quot;value&quot;)</span><br>    String <span class="hljs-title function_">transactionManager</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&quot;&quot;</span>;<br><br>    <span class="hljs-comment">// 事务的传播行为</span><br>    Propagation <span class="hljs-title function_">propagation</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> Propagation.REQUIRED;<br><br>    Isolation <span class="hljs-title function_">isolation</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> Isolation.DEFAULT;<br><br>    <span class="hljs-type">int</span> <span class="hljs-title function_">timeout</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> -<span class="hljs-number">1</span>;<br><br>    <span class="hljs-type">boolean</span> <span class="hljs-title function_">readOnly</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> <span class="hljs-literal">false</span>;<br><br>    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Throwable</span>&gt;[] rollbackFor() <span class="hljs-keyword">default</span> &#123;&#125;;<br><br>    String[] rollbackForClassName() <span class="hljs-keyword">default</span> &#123;&#125;;<br><br>    Class&lt;? <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Throwable</span>&gt;[] noRollbackFor() <span class="hljs-keyword">default</span> &#123;&#125;;<br><br>    String[] noRollbackForClassName() <span class="hljs-keyword">default</span> &#123;&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>接口管理</strong></p>
+<h1 id="6-Spring5新特性"><a href="#6-Spring5新特性" class="headerlink" title="6. Spring5新特性"></a>6. Spring5新特性</h1>
             </div>
             <hr>
             <div>
