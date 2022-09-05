@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>JavaScript-Dom</title>
+    <link href="/2022/09/05/JavaScript-Dom/"/>
+    <url>/2022/09/05/JavaScript-Dom/</url>
+    
+    <content type="html"><![CDATA[<h1 id="1-获取元素的方式"><a href="#1-获取元素的方式" class="headerlink" title="1. 获取元素的方式"></a>1. 获取元素的方式</h1><ul><li>通过id获取</li><li>通过标签名获取</li><li>H5新增的获取方法</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//1. 通过ID获取</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;xxx&#x27;</span>)<br><br><span class="hljs-comment">//2. 通过标签获取,返回集合</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByTagName</span>()<br><br><span class="hljs-comment">//3. H5新增的方法获取</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByClassName</span>()<br><br><span class="hljs-comment">//4.返回指定选择器的第一个元素</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;&#x27;</span>);<br><br><span class="hljs-comment">//5.获取body方法</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span><br><br><span class="hljs-comment">//6.获取html</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span><br></code></pre></td></tr></table></figure><h1 id="2-事件基础"><a href="#2-事件基础" class="headerlink" title="2.事件基础"></a>2.事件基础</h1><p>事件分为三部分</p><ul><li>事件源: 事件被触发的对象</li><li>事件类型: 比如鼠标点击触发</li><li>事件处理程序</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JDBC</title>
     <link href="/2022/08/14/JDBC/"/>
     <url>/2022/08/14/JDBC/</url>
